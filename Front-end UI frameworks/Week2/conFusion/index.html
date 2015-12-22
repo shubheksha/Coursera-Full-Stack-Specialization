@@ -174,10 +174,14 @@
 			</div>
 		</div>
 		<div class="row row-content" id="reserveTableForm">
+			<div class="col-xs-12 col-sm-3">
+				<p style="padding:20px;"></p>
+				<h3 align=center><b>Reserve a Table</b></h3>
+			</div>
 			<div class="col-xs-12 col-sm-9">
-				<form class="form-horizontal">
+				<form class="form-horizontal" role="form">
 					<div class="form-group">
-						<label class="control-label col-sm-2 col-sm-offset-3" for="seats">Number of Guests</label>
+						<label class="control-label col-sm-2" for="seats">Number of Guests</label>
 						<div class="col-sm-7">
 							<label class="radio-inline">
 								<input type="radio" name="seats" value="1">1
@@ -200,23 +204,21 @@
 						</div>
 					</div>
 					<div class="form-group has-feedback">
-						<label class="control-label col-sm-3">
-							<h4><strong> Reserve a Table</strong> </h4>
-						</label>
 						<label class="control-label col-sm-2" for="dateTime">Date and Time</label>
 						<div class="col-sm-3">
 							<input type="date" class="form-control" name="date"><span class="glyphicon glyphicon-calendar form-control-feedback"></span>
 						</div>
-						<div class="col-sm-4">
+						<div class="col-sm-3">
 							<input type="time" class="form-control" name="time"><span class="glyphicon glyphicon-time form-control-feedback"></span>
 						</div>
 					</div>
 
 					<div class="form-group">
-						<button type="submit" class="btn btn-primary col-sm-offset-5">Reserve!</button>
+						<div class="col-sm-offset-2 col-sm-1"> <button type="submit" class="btn btn-primary">Reserve!</button>
+						</div>
 					</div>
 				</form>
-				<div class="alert alert-warning alert-dismissible col-sm-offset-3" role="alert">
+				<div class="alert alert-warning alert-dismissible" role="alert">
 					<button type="button" class="close" data-dismiss="alert" aria-label="Close">
 						<span aria-hidden="true">&times;</span>
 					</button>
