@@ -5,6 +5,7 @@ app.factory('menuFactory', function(){
 	var menuFac = {};
 	            var dishes=[
                          {
+													_id: 0,
                           name:'Uthapizza',
                           image: 'images/uthapizza.jpeg',
                           category: 'mains',
@@ -44,6 +45,7 @@ app.factory('menuFactory', function(){
                                }                                                          ]
                         },
                         {
+													_id: 1,
                           name:'Zucchipakoda',
                            image: 'images/zucchipakoda.jpeg',
                           category: 'appetizer',
@@ -83,6 +85,7 @@ app.factory('menuFactory', function(){
                                }                                                          ]
                         },
                         {
+													_id: 2,
                           name:'Vadonut',
                            image: 'images/vadonut.jpeg',
                           category: 'appetizer',
@@ -123,6 +126,7 @@ app.factory('menuFactory', function(){
                                                           ]
                         },
                         {
+													_id: 3,
                           name:'ElaiCheese Cake',
                            image: 'images/elaicheesecake.jpeg',
                           category: 'dessert',
