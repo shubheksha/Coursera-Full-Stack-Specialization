@@ -74,8 +74,8 @@ app.controller('FeedbackController', ['$scope', function($scope) {
     };
 }]);
 
-app.controller('DishDetailController', ['$scope', 'menuFactory', '$routeParams', function($scope, menuFactory, $routeParams) {
-  $scope.dish = menuFactory.getDish(parseInt($routeParams.id, 10));
+app.controller('DishDetailController', ['$scope', 'menuFactory', '$stateParams', function($scope, menuFactory, $stateParams) {
+  $scope.dish = menuFactory.getDish(parseInt($stateParams.id, 10));
   $scope.sortBy = '';
 }]);
 app.controller('DishCommentController', function($scope){
