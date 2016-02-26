@@ -1,6 +1,5 @@
 <div class="container">
   <div class="row row-content" ng-controller="DishDetailController">
-<<<<<<< HEAD
     <div class="col-xs-12" ng-if="!showDishDetails">
         <h3>{{message}}</h3>
     </div>
@@ -9,13 +8,6 @@
       <div class="media">
         <div class="media-left media-middle">
           <a ui-sref="app.dishdetails({id: dish.id})">
-=======
-    <div class="col-xs-12">
-      <button type="button" class="pull-right btn btn-primary btn-xs" ui-sref="app.menu">Back to Menu</button>
-      <div class="media">
-        <div class="media-left media-middle">
-          <a ui-sref="app.dishdetails({id: dish._id})">
->>>>>>> 138a36425b7aa6af9a89ab6149784286434f8da5
             <img class="media-object img-thumbnail" ng-src={{dish.image}} alt="Uthappizza">
           </a>
         </div>
@@ -35,12 +27,14 @@
         </h3>
       </div>
         <form class="pull-right form-horizontal">
+          <div class="form-group">
           <label for="sortParam" class="control-label col-sm-2 col-xs-2">
             Sort:
           </label>
           <div class="col-sm-6 col-xs-6">
             <input ng-model="sortBy" name="sortParam" type="text" class="form-control"></span>
         </div>
+      </div>
       </form>
     </div>
   </div>
