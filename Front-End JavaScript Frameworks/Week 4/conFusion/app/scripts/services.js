@@ -8,7 +8,7 @@ angular.module('confusionApp')
 		return $http.get(baseUrl+"dishes");
 	};
 	menuFac.getDish = function(index){
-		return $http.get(baseUrl+"dishes/"+index);
+		return $http.get(baseUrl+"dishs/"+index);
 	};
 	var promotions = [
 							{

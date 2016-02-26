@@ -5,7 +5,10 @@
       <h3 align=center>Our Lipsmacking Culinary Creations</h3>
     </div>
     <div class="col-xs-12 col-sm-9 col-sm-pull-3">
-      <div class="media">
+      <div class="col-xs-12" ng-if="!showDish">
+          <h3>{{message}}</h3>
+      </div>
+      <div class="media" ng-if="showDish">
         <div class="media-left media-middle">
           <a ui-sref="app.dishdetails({id: featuredDish.id})">
             <img class="img-thumbnail media-object" ng-src="{{featuredDish.image}}">
