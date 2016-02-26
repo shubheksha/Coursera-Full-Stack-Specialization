@@ -9,7 +9,7 @@
           </a>
         </div>
         <div class="media-body">
-          <h2 class="media-heading">{{dishDetailCtrl.dish.name}}
+          <h2 class="media-heading">{{dish.name}}
             <span class="label label-danger">{{dish.label}}</span>
             <span class="badge">{{dish.price | currency}}</span>
           </h2>
@@ -22,7 +22,7 @@
         <strong>
           Customer Comments</strong>
         <span style="margin-left: 20px">
-          <small>Sort by blah:
+          <small>Sort by:
           </small>
           <input ng-model="sortBy" type="text"></span>
       </h4>
