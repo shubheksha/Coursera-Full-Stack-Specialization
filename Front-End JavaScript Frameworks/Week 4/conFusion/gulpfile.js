@@ -44,7 +44,7 @@ gulp.task('jshint', function() {
 
 gulp.task('clean', function() {
 
-  return del(['dist']);
+  return del(['dist', 'json-server/public']);
 
 });
 
@@ -68,7 +68,14 @@ gulp.task('usemin', ['jshint'], function() {
 
   }))
 
-  .pipe(gulp.dest('dist/'));
+  .pipe(gulp.dest('dist/'))
+  .pipe(notify({
+    message: 'Copying to dist task complete'
+  }))
+  .pipe(gulp.dest('json-server/public'))
+  .pipe(notify({
+    message: 'Copying to public task complete'
+  }));
 
 });
 
@@ -85,7 +92,7 @@ gulp.task('imagemin', function() {
   })))
 
   .pipe(gulp.dest('dist/images'))
-
+  .pipe(gulp.dest('json-server/public/images'))
   .pipe(notify({
     message: 'Images task complete'
   }));
@@ -96,11 +103,13 @@ gulp.task('copyfonts', ['clean'], function() {
 
   gulp.src('./bower_components/font-awesome/fonts/**/*.{ttf,woff,eof,svg}*')
 
-  .pipe(gulp.dest('./dist/fonts'));
+  .pipe(gulp.dest('./dist/fonts'))
+  .pipe(gulp.dest('./json-server/public/fonts'));
 
   gulp.src('./bower_components/bootstrap/dist/fonts/**/*.{ttf,woff,eof,svg}*')
 
-  .pipe(gulp.dest('./dist/fonts'));
+  .pipe(gulp.dest('./dist/fonts'))
+  .pipe(gulp.dest('./json-server/public/fonts'));
 
 });
 
@@ -153,3 +162,4 @@ gulp.task('browser-sync', ['default'], function() {
   gulp.watch(['dist/**']).on('change', browserSync.reload);
 
 });
+
