@@ -1,3 +1,5 @@
+'use strict';
+
 var app = angular.module("confusionApp");
 app.controller("MenuController", ['$scope', 'menuFactory', function($scope, menuFactory) {
 
@@ -6,14 +8,18 @@ app.controller("MenuController", ['$scope', 'menuFactory', function($scope, menu
     $scope.select = function(setTab) {
       $scope.tab = setTab;
 
-      if (setTab === 2)
+      if (setTab === 2){
         $scope.filtText = "appetizer";
-      else if (setTab === 3)
+      }
+      else if (setTab === 3) {
         $scope.filtText = "mains";
-      else if (setTab === 4)
+      }
+      else if (setTab === 4){
         $scope.filtText = "dessert";
-      else
+      }
+      else{
         $scope.filtText = "";
+      }
     };
 
     $scope.isSelected = function(checkTab) {
