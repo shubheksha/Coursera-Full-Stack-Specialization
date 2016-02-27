@@ -2,19 +2,9 @@
 
 var app = angular.module("confusionApp");
 app.controller("MenuController", ['$scope', 'menuFactory', function($scope, menuFactory) {
-  $scope.showDishes = false;
+  $scope.showDishes = true;
   $scope.message = "Loading....";
-  $scope.dishesList = [];
-  menuFactory.getDishes()
-  .then(
-      function(response) {
-          $scope.dishesList = response.data;
-          $scope.showDishes = true;
-      },
-      function(response){
-          $scope.message = "Error: " + response.status + " "+ response.statusText;
-      }
-  );
+  $scope.dishesList = menuFactory.getDishes().query();
     $scope.tab = 1;
     $scope.select = function(setTab) {
       $scope.tab = setTab;
@@ -90,19 +80,10 @@ app.controller('FeedbackController', ['$scope', function($scope) {
 }]);
 
 app.controller('DishDetailController', ['$scope', 'menuFactory', '$stateParams', function($scope, menuFactory, $stateParams) {
-  $scope.dish = {};
+  $scope.dish = menuFactory.getDishes({id: parseInt($stateParams.id, 10)});
   $scope.message = "Loading...";
-  $scope.showDishDetails = false;
-  menuFactory.getDish(parseInt($stateParams.id, 10))
-  .then(
-    function(response){
-      $scope.dish = response.data;
-      $scope.showDishDetails = true;
-    },
-    function(response){
-      $scope.message = "Error: " + response.status + " "+ response.statusText;
-    }
-  );
+  $scope.showDishDetails = true;
+
   $scope.sortBy = '';
 }]);
 app.controller('DishCommentController', function($scope){
@@ -130,18 +111,8 @@ app.controller('DishCommentController', function($scope){
 app.controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory){
     $scope.promotion = menuFactory.getPromotion(0);
     $scope.executiveChef = corporateFactory.getLeader(3);
-    $scope.featuredDish = {};
-    $scope.showDish = false;
-    menuFactory.getDish(0)
-    .then(
-      function(response){
-        $scope.featuredDish = response.data;
-        $scope.showDish = true;
-      },
-      function(response){
-        $scope.message = "Error: " + response.status + " "+ response.statusText;
-      }
-    );
+    $scope.featuredDish = menuFactory.getDishes({id: 0});
+    $scope.showDish = true;
 }]);
 
 app.controller('AboutController', ['$scope', 'corporateFactory', function($scope, corporateFactory){
