@@ -11,7 +11,6 @@ angular.module('confusionApp')
         }
       });
     };
-  
     var promotions = [{
         _id: 0,
         name: 'Weekend Grand Buffet',
