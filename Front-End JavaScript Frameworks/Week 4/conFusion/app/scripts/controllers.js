@@ -105,7 +105,7 @@ app.controller('DishDetailController', ['$scope', 'menuFactory', '$stateParams',
   );
   $scope.sortBy = '';
 }]);
-app.controller('DishCommentController', function($scope){
+app.controller('DishCommentController', ['$scope', 'menuFactory', function($scope, menuFactory){
   $scope.newComment = {
       rating: "",
       comment: "",
@@ -116,6 +116,7 @@ app.controller('DishCommentController', function($scope){
   $scope.submitComment = function(){
     $scope.newComment.date = Date.now();
     $scope.dish.comments.push($scope.newComment);
+    menuFactory.getDishes().update({id: $scope.dish.id}, $scope.dish);
     $scope.commentForm.$setPristine();
     $scope.newComment = {
         rating: "",
@@ -125,7 +126,7 @@ app.controller('DishCommentController', function($scope){
     };
   };
 
-});
+}]);
 
 app.controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory){
     $scope.promotion = menuFactory.getPromotion(0);
