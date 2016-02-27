@@ -80,7 +80,7 @@ app.controller('FeedbackController', ['$scope', function($scope) {
 }]);
 
 app.controller('DishDetailController', ['$scope', 'menuFactory', '$stateParams', function($scope, menuFactory, $stateParams) {
-  $scope.dish = menuFactory.getDishes({id: parseInt($stateParams.id, 10)});
+  $scope.dish = menuFactory.getDishes().get(({id: parseInt($stateParams.id, 10)}));
   $scope.message = "Loading...";
   $scope.showDishDetails = true;
 
@@ -111,7 +111,7 @@ app.controller('DishCommentController', function($scope){
 app.controller('IndexController', ['$scope', 'menuFactory', 'corporateFactory', function($scope, menuFactory, corporateFactory){
     $scope.promotion = menuFactory.getPromotion(0);
     $scope.executiveChef = corporateFactory.getLeader(3);
-    $scope.featuredDish = menuFactory.getDishes({id: 0});
+    $scope.featuredDish = menuFactory.getDishes().get(({id: 0}));
     $scope.showDish = true;
 }]);
 
