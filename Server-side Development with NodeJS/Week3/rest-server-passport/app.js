@@ -5,7 +5,10 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose'); 
+var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 
+var config = require('./config');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -13,7 +16,7 @@ var dishRouter = require('./routes/dishRouter.js');
 var promoRouter = require('./routes/promoRouter.js');
 var leaderRouter = require('./routes/leaderRouter.js');
 
-var url = 'mongodb://localhost:27017/conFusion';
+var url = config.mongoUrl;
 mongoose.connect(url);
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
@@ -35,6 +38,15 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+// passport config
+var User = require('./models/user');
+app.use(passport.initialize());
+passport.use(new LocalStrategy(User.authenticate()));
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
 app.use('/', routes);
 app.use('/users', users);
 app.use('/dishes', dishRouter);
@@ -55,7 +67,7 @@ app.use(function(req, res, next) {
 if (app.get('env') === 'development') {
   app.use(function(err, req, res, next) {
     res.status(err.status || 500);
-    res.render('error', {
+    res.json({
       message: err.message,
       error: err
     });
@@ -66,7 +78,7 @@ if (app.get('env') === 'development') {
 // no stacktraces leaked to user
 app.use(function(err, req, res, next) {
   res.status(err.status || 500);
-  res.render('error', {
+  res.json({
     message: err.message,
     error: {}
   });
